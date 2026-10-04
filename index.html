@@ -43,6 +43,7 @@ footer{position:fixed;bottom:0;left:0;right:0;background:#2c2118cc;color:#e8dcc8
   <b>ACADEMY STARS 3 · UNIT 5 LESSON 2 · WHAT GRANDPA DOES</b>
   <span class="tabs">
     <button class="on" id="tabC" onclick="showTab('class')">Lesson</button>
+    <button id="tabB" onclick="showTab('book')">Book</button>
     <button id="tabH" onclick="showTab('home')">Homework</button>
   </span>
   <button class="rules-btn" onclick="openRules()">Rules / Правила</button>
@@ -99,6 +100,63 @@ footer{position:fixed;bottom:0;left:0;right:0;background:#2c2118cc;color:#e8dcc8
     </section>
   </div>
 
+  
+  <div id="book" class="hide">
+    <section>
+      <h2>Pupil’s Book · pages 60–63</h2>
+      <p class="hint">Lesson 1 song, then Lesson 2 poems. Tasks follow the book.</p>
+      <div class="q">
+        <b>Lesson 1 · Activity 5 · Grandpa’s Song</b>
+        <p>I play the piano. My wife plays the guitar. My son plays the flute.</p>
+        <p>Little Charlie dances round, round and round he goes. Little Charlie dances round to the happy sound.</p>
+        <p>My daughter plays the violin. My granddaughters play the trumpets. My grandson plays the drums.</p>
+        <p>Find the Lesson 1 words: <input id="songWords" placeholder="wife, son, flute..."></p>
+      </div>
+      <div class="q">
+        <b>Lesson 2 · 1 · Find the words in the poems</b>
+        <p>listened · carries · cross · plays · looks after · makes · travelled · studied · worked · danced</p>
+      </div>
+      <div class="q">
+        <b>Jay · My grandpa, my hero</b>
+        <p>Grandpa is my hero. He looks after me.<br>He waits for me at school and makes me toast and tea.</p>
+        <p>Grandpa is my hero. He always plays with me.<br>He talks about the colours of the sky and of the sea.</p>
+        <p>Grandpa is my hero. One day we climbed up high.<br>We listened to the wind and to the birds fly by.</p>
+        <p>Grandpa is my hero. Together we carry my books.<br>Hand in hand we cross the road, but only Grandpa looks.</p>
+        <p>Grandpa is my hero because he’s teaching me.<br>What’s important is my heart, and not that I can’t see.</p>
+      </div>
+      <div class="q">
+        <b>Yusrah</b>
+        <p>Grandpa really loves animals.<br>He’s got a noisy donkey, a naughty parrot and a little black and white cat.</p>
+      </div>
+      <div class="q">
+        <b>Hailey</b>
+        <p>My grandpa’s got five daughters, but he hasn’t got a son.<br>He’s got twenty grandchildren, and I’m the favourite one.</p>
+      </div>
+      <div class="q">
+        <b>Tom</b>
+        <p>My grandpa travelled the world by boat, by bus, by train and by plane.<br>He danced in France. He studied in Spain. He worked in Japan.<br>He was an international man.</p>
+      </div>
+      <div class="q">
+        <b>Lesson 2 · 3 · Match the sentence to the poem</b>
+        <p>1 My grandpa makes toast and tea. <input data-poem="jay" placeholder="Jay / Yusrah / Hailey / Tom"></p>
+        <p>2 My grandpa loves animals. <input data-poem="yusrah"></p>
+        <p>3 My grandpa has got twenty grandchildren. <input data-poem="hailey"></p>
+        <p>4 My grandpa visited Japan. <input data-poem="tom"></p>
+        <p>5 My grandpa waited for me at school. <input data-poem="jay"></p>
+        <p>6 My grandpa studied in Spain. <input data-poem="tom"></p>
+        <p>7 My grandpa has got a naughty parrot. <input data-poem="yusrah"></p>
+        <p>8 I’m my grandpa’s favourite grandchild. <input data-poem="hailey"></p>
+      </div>
+      <div class="q">
+        <b>Lesson 2 · 4 · Values</b>
+        <p>Who is your hero? Why?</p>
+        <textarea id="hero" rows="3" placeholder="My hero is ... because ..."></textarea>
+      </div>
+      <button class="go" onclick="checkBook()">Check the book match</button>
+      <p id="mb"></p>
+    </section>
+  </div>
+
   <div id="home" class="hide">
     <section>
       <h2>Homework · same picture, no new words</h2>
@@ -150,9 +208,19 @@ function openRules(){document.getElementById("drawer").classList.add("on")}
 function closeRules(){document.getElementById("drawer").classList.remove("on")}
 function showTab(which){
   document.getElementById("class").classList.toggle("hide", which!=="class");
+  document.getElementById("book").classList.toggle("hide", which!=="book");
   document.getElementById("home").classList.toggle("hide", which!=="home");
   document.getElementById("tabC").classList.toggle("on", which==="class");
+  document.getElementById("tabB").classList.toggle("on", which==="book");
   document.getElementById("tabH").classList.toggle("on", which==="home");
+}
+function checkBook(){
+  const need=["jay","yusrah","hailey","tom","jay","tom","yusrah","hailey"];
+  let ok=0;
+  [...document.querySelectorAll("[data-poem]")].forEach((inp,i)=>{ if(norm(inp.value).includes(need[i])) ok++ });
+  const el=document.getElementById("mb");
+  el.className=ok===8?"ok":"bad";
+  el.textContent=`${ok}/8 sentences matched to the poems.`;
 }
 function norm(v){return (v||"").trim().toLowerCase()}
 const q1=[
