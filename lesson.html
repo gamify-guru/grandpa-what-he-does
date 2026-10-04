@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Grandpa Does · Unit 5 Lesson 2</title>
+<style>
+:root{--ink:#2c2118;--brown:#6b4a2e;--gold:#c4a574;--cream:#f7f1e7;--soft:#f3e6d4;--accent:#8b5a2b;--line:#d9cbb6;--ok:#2f7d4a;--bad:#a33b2b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,serif;color:var(--ink);background:#f4efe6}
+header{background:#2c2118;color:#e8dcc8;padding:12px 16px;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+header b{color:#c4a574;font-size:13px}
+button{font:inherit;cursor:pointer}
+.rules-btn,.go{border:0;border-radius:999px;padding:8px 14px;background:#c4a574;color:#2c2118}
+.go{background:#8b5a2b;color:#fff;border-radius:10px}
+.wrap{max-width:900px;margin:0 auto;padding:16px 14px 80px}
+h1{font-size:30px;margin:8px 0 4px}
+.photo{width:100%;border-radius:14px;border:4px solid #efe6d6;display:block;margin:12px 0}
+section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
+.poem{background:#f7f1e7;border-radius:12px;padding:12px;margin:8px 0;line-height:1.45}
+.q{background:#f3e6d4;border-radius:10px;padding:10px;margin:8px 0}
+input,textarea,select{font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:100%;margin-top:4px}
+.opt{border:1px solid var(--gold);background:#fff;border-radius:8px;padding:6px 10px;margin:4px}
+.opt.on{background:#2c2118;color:#fff}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.drawer{position:fixed;inset:0;background:#2c211888;display:none;z-index:5}
+.drawer.on{display:block}
+.panel{position:absolute;right:0;top:0;bottom:0;width:min(420px,100%);background:#fffaf3;overflow:auto;padding:16px}
+.card{border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0;background:#fff}
+footer{position:fixed;bottom:0;left:0;right:0;background:#2c2118e6;color:#e8dcc8;text-align:right;padding:6px 14px}
+</style>
+</head>
+<body>
+<header>
+  <b>ACADEMY STARS 3 · UNIT 5 LESSON 2 · WHAT GRANDPA DOES</b>
+  <button class="rules-btn" onclick="document.getElementById('drawer').classList.add('on')">Rules / Правила</button>
+</header>
+<div class="wrap">
+  <h1>My grandpa, my hero</h1>
+  <p>Name <input id="name" style="width:180px"> · Album <b id="count">0</b>/6</p>
+  <img class="photo" alt="Grandpa carries books and holds the boy's hand at the school gate" src="grandpa-day.jpg">
+
+  <section>
+    <h2>Lesson 1 song · Grandpa’s Song</h2>
+    <div class="poem">
+      <p>I play the piano. My wife plays the guitar. My son plays the flute.</p>
+      <p>Little Charlie dances round, round and round he goes.<br>Little Charlie dances round to the happy sound.</p>
+      <p>My daughter plays the violin. My granddaughters play the trumpets. My grandson plays the drums.</p>
+    </div>
+    <div class="q"><b>Task A · Find 6 Lesson 1 words in the song</b>
+      <input id="a1" placeholder="1"><input id="a2" placeholder="2"><input id="a3" placeholder="3">
+      <input id="a4" placeholder="4"><input id="a5" placeholder="5"><input id="a6" placeholder="6">
+      <button class="go" onclick="checkA()">Check</button><p id="ma"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lesson 2 poems · Pupil’s Book pp. 62–63</h2>
+    <div class="poem"><b>Jay</b>
+      <p>Grandpa is my hero. He looks after me.<br>He waits for me at school and makes me toast and tea.</p>
+      <p>Grandpa is my hero. He always plays with me.<br>He talks about the colours of the sky and of the sea.</p>
+      <p>Grandpa is my hero. One day we climbed up high.<br>We listened to the wind and to the birds fly by.</p>
+      <p>Grandpa is my hero. Together we carry my books.<br>Hand in hand we cross the road, but only Grandpa looks.</p>
+      <p>Grandpa is my hero because he’s teaching me.<br>What’s important is my heart, and not that I can’t see.</p>
+    </div>
+    <div class="poem"><b>Yusrah</b><p>Grandpa really loves animals.<br>He’s got a noisy donkey, a naughty parrot and a little black and white cat.</p></div>
+    <div class="poem"><b>Hailey</b><p>My grandpa’s got five daughters, but he hasn’t got a son.<br>He’s got twenty grandchildren, and I’m the favourite one.</p></div>
+    <div class="poem"><b>Tom</b><p>My grandpa travelled the world by boat, by bus, by train and by plane.<br>He danced in France. He studied in Spain. He worked in Japan.<br>He was an international man.</p></div>
+  </section>
+
+  <section>
+    <h2>Task B · Find the verbs in the poems</h2>
+    <p>listened · carries · cross · plays · looks after · makes · travelled · studied · worked · danced</p>
+    <div class="q">1. Which poem has <i>makes</i>? <input data-b="jay"></div>
+    <div class="q">2. Which poem has <i>travelled</i> and <i>studied</i>? <input data-b="tom"></div>
+    <div class="q">3. Which poem has <i>climbed</i> and <i>listened</i>? <input data-b="jay"></div>
+    <div class="q">4. Which poem has <i>danced</i> and <i>worked</i>? <input data-b="tom"></div>
+    <div class="q">5. Who looks after Jay? <input data-b="grandpa"></div>
+    <div class="q">6. Who carries the books? <input data-b="they"></div>
+    <button class="go" onclick="checkB()">Check</button><p id="mb"></p>
+  </section>
+
+  <section>
+    <h2>Task C · Match the sentence to the poem</h2>
+    <p>Write Jay, Yusrah, Hailey or Tom.</p>
+    <div class="q">1. My grandpa makes toast and tea. <input data-c="jay"></div>
+    <div class="q">2. My grandpa loves animals. <input data-c="yusrah"></div>
+    <div class="q">3. My grandpa has got twenty grandchildren. <input data-c="hailey"></div>
+    <div class="q">4. My grandpa visited Japan. <input data-c="tom"></div>
+    <div class="q">5. My grandpa waited for me at school. <input data-c="jay"></div>
+    <div class="q">6. My grandpa studied in Spain. <input data-c="tom"></div>
+    <div class="q">7. My grandpa has got a naughty parrot. <input data-c="yusrah"></div>
+    <div class="q">8. I’m my grandpa’s favourite grandchild. <input data-c="hailey"></div>
+    <button class="go" onclick="checkC()">Check</button><p id="mc"></p>
+  </section>
+
+  <section>
+    <h2>Task D · Person + action</h2>
+    <div class="q">1. My grandpa ____ for me at school. <input data-d="waits"></div>
+    <div class="q">2. He ____ toast and tea. <input data-d="makes"></div>
+    <div class="q">3. He ____ my books. <input data-d="carries"></div>
+    <div class="q">4. We ____ the road. <input data-d="cross"></div>
+    <div class="q">5. My son plays the ____. <input data-d="flute"></div>
+    <div class="q">6. My grandson plays the ____. <input data-d="drums"></div>
+    <div class="q">7. One day we ____ up high. <input data-d="climbed"></div>
+    <div class="q">8. We ____ to the wind. <input data-d="listened"></div>
+    <button class="go" onclick="checkD()">Check</button><p id="md"></p>
+  </section>
+
+  <section>
+    <h2>Task E · Values from the book</h2>
+    <div class="q">Who is your hero? Why?<textarea id="hero" rows="3"></textarea></div>
+    <button class="go" onclick="checkE()">Save</button><p id="me"></p>
+  </section>
+
+  <section>
+    <h2>Homework</h2>
+    <div class="q"><b>1. Label the photo</b>
+      <p>Who carries the books? <input data-h="grandpa"></p>
+      <p>Who holds his hand? <input data-h="boy"></p>
+      <p>What food is on the bench? <input data-h="toast"></p>
+      <p>Where are they? <input data-h="school"></p>
+    </div>
+    <div class="q"><b>2. Spell 6 verbs</b><p>wait, make, carry, cross, teach, listen</p>
+      <input data-s="wait"><input data-s="make"><input data-s="carry"><input data-s="cross"><input data-s="teach"><input data-s="listen">
+    </div>
+    <div class="q"><b>3. Odd one out</b>
+      <p>wait · flute · carry <input data-o="flute"></p>
+      <p>son · grandson · toast <input data-o="toast"></p>
+      <p>look after · teach · trumpet <input data-o="trumpet"></p>
+      <p>drums · violin · cross <input data-o="cross"></p>
+    </div>
+    <div class="q"><b>4. Four true sentences about your family</b><textarea rows="4" placeholder="My grandpa waits..."></textarea></div>
+    <button class="go" onclick="checkH()">Check homework 1–3</button><p id="mh"></p>
+  </section>
+</div>
+
+<div class="drawer" id="drawer" onclick="if(event.target.id=='drawer')this.classList.remove('on')">
+  <div class="panel">
+    <button class="go" onclick="document.getElementById('drawer').classList.remove('on')">Close</button>
+    <h2>Rules / Правила</h2>
+    <div class="card"><b>He / She + verb-s</b><p>He waits. She plays. I wait. They play.</p><p>Он/она: глагол с -s.</p></div>
+    <div class="card"><b>look after</b><p>He looks after me.</p><p>заботиться.</p></div>
+    <div class="card"><b>wait for</b><p>He waits for me at school.</p><p>ждать кого-то.</p></div>
+    <div class="card"><b>make + food</b><p>He makes toast and tea.</p></div>
+    <div class="card"><b>play the / play with</b><p>My son plays the flute. He plays with me.</p></div>
+    <div class="card"><b>carry / cross</b><p>He carries my books. We cross the road.</p></div>
+    <div class="card"><b>One day in the past</b><p>climbed, listened, travelled, studied, worked, danced. Один день в прошлом.</p></div>
+    <div class="card"><b>Lesson 1 words</b><p>husband, wife, son, daughter, grandson, granddaughter, flute, violin, drums, trumpet.</p></div>
+  </div>
+</div>
+<footer>@gamify_guru</footer>
+<script>
+function norm(v){return (v||"").trim().toLowerCase()}
+function say(id, ok, text){const el=document.getElementById(id); el.className=ok?"ok":"bad"; el.textContent=text}
+const song=["wife","son","flute","daughter","violin","grandson","granddaughters","trumpets","drums","piano","guitar"];
+function checkA(){
+  const vals=[...Array(6)].map((_,i)=>norm(document.getElementById("a"+(i+1)).value));
+  const ok=vals.filter(v=>song.some(w=>v.includes(w))).length;
+  say("ma", ok>=6, ok+"/6 Lesson 1 words.");
+  if(ok>=6) album(1);
+}
+function checkB(){
+  const need=["jay","tom","jay","tom","grandpa","they"];
+  let ok=0; [...document.querySelectorAll("[data-b]")].forEach((inp,i)=>{const v=norm(inp.value); if(v.includes(need[i])||(need[i]==="they"&&(v.includes("we")||v.includes("together")||v.includes("jay")))) ok++});
+  say("mb", ok>=5, ok+"/6.");
+  if(ok>=5) album(2);
+}
+function checkC(){
+  let ok=0; [...document.querySelectorAll("[data-c]")].forEach(inp=>{ if(norm(inp.value).includes(inp.dataset.c)) ok++ });
+  say("mc", ok===8, ok+"/8 poems.");
+  if(ok>=6) album(4);
+}
+function checkD(){
+  const keys=["wait","make","carr","cross","flute","drum","climb","listen"];
+  let ok=0; [...document.querySelectorAll("[data-d]")].forEach((inp,i)=>{ if(norm(inp.value).includes(keys[i])) ok++ });
+  say("md", ok>=6, ok+"/8.");
+  if(ok>=6) album(5);
+}
+function checkE(){
+  const v=document.getElementById("hero").value.trim();
+  say("me", v.split(" ").length>3, v.split(" ").length>3?"Saved. Say it out loud.":"Write a full sentence.");
+}
+function checkH(){
+  const h=[["grandpa","grandfather"],["boy","grandson"],["toast"],["school"]];
+  let a=0; [...document.querySelectorAll("[data-h]")].forEach((inp,i)=>{ if(h[i].some(x=>norm(inp.value).includes(x))) a++ });
+  const spells=["wait","make","carry","cross","teach","listen"];
+  let b=0; [...document.querySelectorAll("[data-s]")].forEach((inp,i)=>{ if(norm(inp.value)===spells[i]) b++ });
+  const odd=["flute","toast","trumpet","cross"];
+  let c=0; [...document.querySelectorAll("[data-o]")].forEach((inp,i)=>{ if(norm(inp.value).includes(odd[i])) c++ });
+  say("mh", a+b+c>=10, `Photo ${a}/4 · spelling ${b}/6 · odd one out ${c}/4.`);
+  if(a+b+c>=10) album(6);
+}
+function album(n){document.getElementById("count").textContent=Math.max(n, +document.getElementById("count").textContent)}
+document.getElementById("name").value=localStorage.getItem("day-name")||"";
+document.getElementById("name").oninput=e=>localStorage.setItem("day-name", e.target.value);
+</script>
+</body>
+</html>
